@@ -13,7 +13,7 @@ export const ContactItem = ({ contact }) => {
             (type === "professional" ? "badge-success" : "badge-primary")
           }
         >
-          {type.charAt(0).toUpperCase() + type.slice(1)}
+          {type}
         </span>{" "}
       </h3>
 
@@ -33,8 +33,6 @@ export const ContactItem = ({ contact }) => {
         <button className="btn btn-dark btn-sm">Edit</button>
         <button className="btn btn-danger btn-sm">Delete</button>
       </p>
-
     </div>
   );
 };
-
