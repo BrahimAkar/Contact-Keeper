@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import uuid from "uuid";
-import contactContext from "./ContactContext";
+import ContactContext from "./ContactContext";
 import {
   ADD_CONTACT,
   DELETE_CONTACT,
@@ -11,10 +11,10 @@ import {
   CLEAR_FILTER,
   SET_ALERT,
   REMOVE_ALERT,
-} from "./types";
+} from "../types";
 import contactReducer from "./ContactReducer";
 
-const ContactState = (propos) => {
+const ContactState = (props) => {
   const initialState = {
     contacts: [
       {
@@ -22,7 +22,7 @@ const ContactState = (propos) => {
         name: "Brahim Akarouch",
         email: "brahim.akarouch@gmail.com",
         phone: "0610934578",
-        type: "personal",
+        type: "professional",
       },
       {
         id: 2,
@@ -40,4 +40,32 @@ const ContactState = (propos) => {
       },
     ],
   };
+
+  const [state, dispatch] = useReducer(contactReducer, initialState);
+
+  //* Add contact
+
+  //* Delete contact
+
+  //* Set Current contact
+
+  //* Clear Current Contact
+
+  //* Update Current contact
+
+  //* Filter contacts
+
+  //* Clear Filter
+
+  return (
+    <ContactContext.Provider
+      value={{
+        contacts: state.contacts,
+      }}
+    >
+      {props.children}
+    </ContactContext.Provider>
+  );
 };
+
+export default ContactState;
