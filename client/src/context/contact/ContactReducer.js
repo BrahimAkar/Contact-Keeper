@@ -20,5 +20,22 @@ export default (state, action) => {
         //* we can just change contacts, state is emutable, we have to copy whats already there then add the new
         contacts: [...state.contacts, action.payload],
       };
+    case DELETE_CONTACT:
+      return {
+        ...state,
+        contacts: state.contacts.filter(
+          (contact) => contact.id !== action.payload
+        ),
+      };
+    case SET_CURRUNT:
+      return {
+        ...state,
+        current: action.payload,
+      };
+    case CLEAR_CURRENTS:
+      return {
+        ...state,
+        current: null,
+      };
   }
 };
