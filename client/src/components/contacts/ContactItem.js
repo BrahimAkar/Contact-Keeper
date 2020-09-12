@@ -10,10 +10,14 @@ export const ContactItem = ({ contact }) => {
   const onDelete = () => {
     deleteContact(id);
     clearCurrent();
+    
   };
   const onEdit = () => {
     setCurrent(contact);
   };
+
+
+
   return (
     <div className="card bg-light">
       <h3 className="text-primary text-left">
