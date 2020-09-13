@@ -34,7 +34,7 @@ const ContactState = (props) => {
   const getContacts = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:${process.env.PORT}/api/contacts`
+        `https://glacial-reef-70514.herokuapp.com/api/contacts`
       );
       dispatch({ type: GET_CONTACTS, payload: res.data });
     } catch (error) {
@@ -51,7 +51,7 @@ const ContactState = (props) => {
 
     try {
       const res = await axios.post(
-        `http://localhost:${process.env.PORT}/api/contacts`,
+        `https://glacial-reef-70514.herokuapp.com/api/contacts`,
         contact
       );
       dispatch({ type: ADD_CONTACT, payload: res.data });
@@ -64,7 +64,7 @@ const ContactState = (props) => {
   const deleteContact = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:${process.env.PORT}/api/contacts/${id}`
+        `https://glacial-reef-70514.herokuapp.com/api/contacts/${id}`
       );
       dispatch({ type: DELETE_CONTACT, payload: id });
     } catch (error) {
@@ -81,7 +81,7 @@ const ContactState = (props) => {
 
     try {
       const res = await axios.put(
-        `http://localhost:${process.env.PORT}/api/contacts/${contact._id}`,
+        `https://glacial-reef-70514.herokuapp.com/api/contacts/${contact._id}`,
         contact,
         config
       );
