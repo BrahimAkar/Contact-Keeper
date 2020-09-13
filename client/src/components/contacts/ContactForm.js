@@ -50,7 +50,7 @@ const ContactForm = () => {
         type="text"
         placeholder="name"
         name="name"
-        value={current !== null ? name : ""}
+        value={name}
         onChange={onChange}
       />
       <input

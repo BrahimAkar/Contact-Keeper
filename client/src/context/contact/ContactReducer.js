@@ -2,10 +2,13 @@ import {
   ADD_CONTACT,
   DELETE_CONTACT,
   SET_CURRUNT,
+  GET_CONTACTS,
+  CLEAR_CONTACTS,
   CLEAR_CURRENTS,
   UPDATE_CONTACT,
   FILTER_CONTACTS,
   CLEAR_FILTER,
+  CONTACT_ERROR,
   SET_ALERT,
   REMOVE_ALERT,
 } from "../types";
@@ -19,20 +22,37 @@ export default (state, action) => {
         ...state,
         //* we can just change contacts, state is emutable, we have to copy whats already there then add the new
         contacts: [...state.contacts, action.payload],
+        loading: false,
+      };
+    case GET_CONTACTS:
+      return {
+        ...state,
+        contacts: action.payload,
+        loading: false,
       };
     case DELETE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.filter(
-          (contact) => contact.id !== action.payload
+          (contact) => contact._id !== action.payload
         ),
+        loading: false,
+      };
+    case CLEAR_CONTACTS:
+      return {
+        ...state,
+        contacts: null,
+        filtered: null,
+        error: null,
+        current: null,
       };
     case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map((contact) =>
-          contact.id === action.payload.id ? action.payload : contact
+          contact._id === action.payload._id ? action.payload : contact
         ),
+        loading: false,
       };
     case FILTER_CONTACTS:
       return {
@@ -56,6 +76,11 @@ export default (state, action) => {
       return {
         ...state,
         current: null,
+      };
+    case CONTACT_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
   }
 };
