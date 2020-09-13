@@ -13,6 +13,7 @@ import AuthState from "./context/auth/authState";
 import AlertState from "./context/alert/AlertState";
 import setAuthToken from "../src/utils/setAuthToken";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import AlreadyAuth from "./components/routing/AlreadyAuth";
 import "./App.css";
 
 if (localStorage.token) {
@@ -32,8 +33,8 @@ const App = () => {
                 <Switch>
                   <PrivateRoute exact path="/" component={Home} />
                   <Route exact path="/about" component={About} />
-                  <Route exact path="/register" component={Register} />
-                  <Route exact path="/login" component={Login} />
+                  <AlreadyAuth exact path="/register" component={Register} />
+                  <AlreadyAuth exact path="/login" component={Login} />
                   <Route component={NotFound} />
                 </Switch>
               </div>
