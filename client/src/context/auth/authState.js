@@ -31,7 +31,9 @@ const AuthState = (props) => {
       setAuthToken(localStorage.token);
     }
     try {
-      const res = await axios.get("http://localhost:5000/api/auth");
+      const res = await axios.get(
+        `http://localhost:${process.env.PORT}/api/auth`
+      );
       dispatch({ type: USER_LOADED, payload: res.data });
     } catch (error) {
       dispatch({ type: AUTH_ERROR });
@@ -47,7 +49,7 @@ const AuthState = (props) => {
     };
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/users",
+        `http://localhost:${process.env.PORT}/api/users`,
         formData,
         config
       );
@@ -66,7 +68,7 @@ const AuthState = (props) => {
     };
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth",
+        `http://localhost:${process.env.PORT}/api/auth`,
         formData,
         config
       );
