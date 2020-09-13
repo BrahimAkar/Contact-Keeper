@@ -32,7 +32,7 @@ const AuthState = (props) => {
     }
     try {
       const res = await axios.get(
-        `https://glacial-reef-70514.herokuapp.com/api/auth`
+        `https://mycontactsbucket.herokuapp.com/api/auth`
       );
       dispatch({ type: USER_LOADED, payload: res.data });
     } catch (error) {
@@ -49,7 +49,7 @@ const AuthState = (props) => {
     };
     try {
       const res = await axios.post(
-        `https://glacial-reef-70514.herokuapp.com/api/users`,
+        `https://mycontactsbucket.herokuapp.com/api/users`,
         formData,
         config
       );
@@ -68,7 +68,7 @@ const AuthState = (props) => {
     };
     try {
       const res = await axios.post(
-        `https://glacial-reef-70514.herokuapp.com/api/auth`,
+        `https://mycontactsbucket.herokuapp.com/api/auth`,
         formData,
         config
       );
